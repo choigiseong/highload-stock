@@ -1,4 +1,4 @@
-package com.coco.sellingstock
+package com.coco.order
 
 import org.springframework.stereotype.Component
 import org.springframework.data.redis.core.RedisTemplate

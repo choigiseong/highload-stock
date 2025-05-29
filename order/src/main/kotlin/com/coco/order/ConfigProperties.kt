@@ -1,4 +1,4 @@
-package com.coco.sellingstock
+package com.coco.order
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean

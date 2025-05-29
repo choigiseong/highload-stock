@@ -1,4 +1,4 @@
-package com.coco.sellingstock
+package com.coco.order
 
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional

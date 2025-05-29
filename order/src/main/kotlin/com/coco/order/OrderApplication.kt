@@ -1,11 +1,11 @@
-package com.coco.sellingstock
+package com.coco.order
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class SellingStockApplication
+class OrderApplication
 
 fun main(args: Array<String>) {
-	runApplication<SellingStockApplication>(*args)
+	runApplication<OrderApplication>(*args)
 }

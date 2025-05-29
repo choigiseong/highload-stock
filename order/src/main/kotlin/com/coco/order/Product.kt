@@ -1,4 +1,4 @@
-package com.coco.sellingstock
+package com.coco.order
 
 import jakarta.persistence.*
 

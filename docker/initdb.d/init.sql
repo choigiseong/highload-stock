@@ -22,6 +22,21 @@ CREATE TABLE `selling_stock` (
     FOREIGN KEY (product_id) REFERENCES product (id)
 );
 
+CREATE TABLE orders (
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    order_number VARCHAR(50) NOT NULL,
+    created_at DATETIME NOT NULL
+);
+
+CREATE TABLE order_item (
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    order_id BIGINT NOT NULL,
+    product_id BIGINT NOT NULL,
+    quantity INT NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY (product_id) REFERENCES product(id)
+);
+
 
 INSERT INTO product(name) VALUES ('대파'), ('계란');
 INSERT INTO stock (product_id, stock, expired_at)
