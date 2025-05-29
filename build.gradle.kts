@@ -5,38 +5,53 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.7"
 }
 
-group = "com.coco"
-version = "0.0.1-SNAPSHOT"
+allprojects {
+	group = "com.coco"
+	version = "0.0.1-SNAPSHOT"
 
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
+	repositories {
+		mavenCentral()
 	}
-}
 
-repositories {
-	mavenCentral()
-}
-
-dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.springframework.boot:spring-boot-starter")
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("mysql:mysql-connector-java:8.0.33")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-	testImplementation("org.testcontainers:junit-jupiter")
-	testImplementation("org.testcontainers:mysql")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-}
-
-kotlin {
-	compilerOptions {
-		freeCompilerArgs.addAll("-Xjsr305=strict")
+	java {
+		toolchain {
+			languageVersion = JavaLanguageVersion.of(17)
+		}
 	}
+
+	kotlin {
+		compilerOptions {
+			freeCompilerArgs.addAll("-Xjsr305=strict")
+		}
+	}
+
+	tasks.withType<Test> {
+		useJUnitPlatform()
+	}
+
+	subprojects {
+		apply(plugin = "org.springframework.boot")
+		apply(plugin = "io.spring.dependency-management")
+		apply(plugin = "org.jetbrains.kotlin.jvm")
+		apply(plugin = "org.jetbrains.kotlin.plugin.spring")
+
+		dependencies {
+			implementation("org.springframework.boot:spring-boot-starter-web")
+			implementation("org.springframework.boot:spring-boot-starter")
+			implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+			implementation("org.jetbrains.kotlin:kotlin-reflect")
+			implementation("mysql:mysql-connector-java:8.0.33")
+			testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+			testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+			testImplementation("org.testcontainers:junit-jupiter")
+			testImplementation("org.testcontainers:mysql")
+			testImplementation("org.springframework.boot:spring-boot-starter-test")
+		}
+	}
+
 }
 
-tasks.withType<Test> {
-	useJUnitPlatform()
-}
+
+
+
+

@@ -1,1 +1,1 @@
-rootProject.name = "stock"
+include("stock")
