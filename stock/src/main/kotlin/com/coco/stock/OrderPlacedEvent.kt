@@ -1,4 +1,4 @@
-package com.coco.orderplacement
+package com.coco.stock
 
 import java.time.Instant
 

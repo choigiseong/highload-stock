@@ -38,7 +38,14 @@ CREATE TABLE order_item (
     quantity INT NOT NULL,
     FOREIGN KEY (order_id) REFERENCES orders(id)
 );
-
+CREATE TABLE stock_processed_events (
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    order_key VARCHAR(255) NOT NULL UNIQUE,
+    processed_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    event_type VARCHAR(100) NOT NULL,
+    event_payload JSON,
+    service_name VARCHAR(100)
+);
 
 INSERT INTO product(name, price) VALUES ('대파', 3000), ('계란', 10000);
 INSERT INTO stock (product_id, stock, expired_at)

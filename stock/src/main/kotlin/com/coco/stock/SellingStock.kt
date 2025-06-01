@@ -1,4 +1,4 @@
-package com.coco.orderplacement
+package com.coco.stock
 
 import jakarta.persistence.*
 import java.time.LocalDateTime
