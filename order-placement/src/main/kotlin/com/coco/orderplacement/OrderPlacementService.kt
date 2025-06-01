@@ -2,6 +2,7 @@ package com.coco.orderplacement
 
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
+import java.time.Instant
 
 @Service
 class OrderPlacementService(
@@ -9,7 +10,7 @@ class OrderPlacementService(
     private val eventPublisher: ApplicationEventPublisher,
     private val productRepository: ProductRepository
 ) {
-    fun placeOrder(productId: Long, quantity: Int, orderKey: String) {
+    fun placeOrder(productId: Long, quantity: Int, orderKey: String, orderPlacedAt: Instant) {
         val product = productRepository.findById(productId)
             .orElseThrow {
                 IllegalArgumentException("존재하지 않는 상품: $productId")
@@ -22,8 +23,9 @@ class OrderPlacementService(
                 orderKey = orderKey,
                 productId = productId,
                 quantity = quantity,
-                productName = product.name, // Product 엔티티에 name 필드가 있다고 가정
-                productPrice = product.price // Product 엔티티에 price 필드가 있다고 가정
+                productName = product.name,
+                productPrice = product.price,
+                placedAt = orderPlacedAt
             )
         )
     }

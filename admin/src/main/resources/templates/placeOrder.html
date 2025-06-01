@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>주문 요청 프론트엔드 테스트</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f7f6; }
+        .container { max-width: 500px; margin: 30px auto; padding: 25px; border: 1px solid #e0e0e0; border-radius: 10px; background-color: #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+        h1 { text-align: center; color: #0056b3; margin-bottom: 25px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        button:hover { background-color: #218838; }
+        #response {
+            margin-top: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #e9ecef;
+            font-family: monospace;
+            white-space: pre-wrap; /* 줄바꿈 유지 */
+            word-wrap: break-word; /* 긴 단어 줄바꿈 */
+        }
+        .message { padding: 15px; margin-bottom: 20px; border-radius: 5px; font-weight: bold; text-align: center; }
+        .message.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .message.danger { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>주문 요청 프론트엔드 테스트</h1>
+
+    <div>
+        <label for="productId">상품 ID:</label>
+        <input type="number" id="productId" value="1" required min="1">
+    </div>
+    <div>
+        <label for="quantity">수량:</label>
+        <input type="number" id="quantity" value="1" required min="1">
+    </div>
+    <div>
+        <label for="userId">유저id:</label>
+        <input type="text" id="userId">
+    </div>
+    <div>
+        <button onclick="placeOrder()">주문 요청 보내기</button>
+    </div>
+
+    <h2>응답:</h2>
+    <div id="response"></div>
+</div>
+
+<script>
+        const API_URL = 'http://localhost:8082/api/orders/place'; // order-placement-service의 API URL
+
+        async function placeOrder() {
+            const productId = document.getElementById('productId').value;
+            const quantity = document.getElementById('quantity').value;
+
+            const payload = {
+                productId: parseInt(productId),
+                quantity: parseInt(quantity),
+                userId: parseInt(userId)
+            };
+
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerHTML = '요청 중...';
+            responseDiv.className = ''; // 클래스 초기화
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) { // HTTP 상태 코드가 2xx인 경우
+                    responseDiv.innerHTML = `성공! ${JSON.stringify(data, null, 2)}`;
+                    responseDiv.classList.add('message', 'success');
+                } else { // HTTP 상태 코드가 2xx가 아닌 경우 (예: 400 Bad Request, 500 Internal Server Error)
+                    responseDiv.innerHTML = `실패: ${JSON.stringify(data, null, 2)}`;
+                    responseDiv.classList.add('message', 'danger');
+                }
+            } catch (error) {
+                responseDiv.innerHTML = `네트워크 오류 또는 API 호출 실패: ${error.message}`;
+                responseDiv.classList.add('message', 'danger');
+            }
+        }
+    </script>
+</body>
+</html>

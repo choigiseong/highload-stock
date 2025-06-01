@@ -57,7 +57,7 @@ VALUES
   (2, 50, '2025-06-08'),
   (2, 50, '2025-12-25');
 
-INSERT INTO available_stock (product_id, stock)
+INSERT INTO selling_stock (product_id, stock)
 VALUES
   (1, 142),
   (2, 150);
