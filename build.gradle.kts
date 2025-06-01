@@ -46,6 +46,7 @@ allprojects {
 			testImplementation("org.testcontainers:junit-jupiter")
 			testImplementation("org.testcontainers:mysql")
 			testImplementation("org.springframework.boot:spring-boot-starter-test")
+			implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 		}
 	}
 

@@ -26,6 +26,7 @@ class SellingStockProvider(
 
     fun decrease(productId: Long, quantity: Int, orderId: String): Boolean {
         val key = getKey(productId)
+        get(productId)
 
         val result = redisTemplate.execute(
             DefaultRedisScript(DECR_LUA, Long::class.java),
