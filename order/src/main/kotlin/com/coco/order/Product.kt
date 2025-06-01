@@ -10,12 +10,6 @@ class Product(
     val id: Long? = null,
     @Column(nullable = false)
     val name: String,
-    @OneToMany(
-        mappedBy = "product",
-        fetch = FetchType.LAZY,
-        cascade = [CascadeType.ALL],
-    )
-    val stocks: MutableList<SellingStock> = mutableListOf(),
 ) {
 
 }

@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class ProductService(
     private val productRepository: ProductRepository,
-    private val sellingStockRepository: SellingStockRepository
 ) {
 
     // 상품 등록
