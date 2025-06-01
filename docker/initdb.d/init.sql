@@ -2,6 +2,7 @@ CREATE DATABASE IF NOT EXISTS warehouse;
 CREATE TABLE `product` (
     id BIGINT NOT NULL AUTO_INCREMENT,
     name varchar(256) NOT NULL,
+    price BIGINT NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -32,13 +33,14 @@ CREATE TABLE order_item (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     order_id BIGINT NOT NULL,
     product_id BIGINT NOT NULL,
+    product_name VARCHAR(256) NOT NULL,
+    product_price BIGINT NOT NULL,
     quantity INT NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES orders(id),
-    FOREIGN KEY (product_id) REFERENCES product(id)
+    FOREIGN KEY (order_id) REFERENCES orders(id)
 );
 
 
-INSERT INTO product(name) VALUES ('대파'), ('계란');
+INSERT INTO product(name, price) VALUES ('대파', 3000), ('계란', 10000);
 INSERT INTO stock (product_id, stock, expired_at)
 VALUES
   (1, 100, '2025-06-30'),

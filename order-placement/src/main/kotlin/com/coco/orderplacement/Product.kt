@@ -1,4 +1,4 @@
-package com.coco.order
+package com.coco.orderplacement
 
 import jakarta.persistence.*
 
@@ -10,6 +10,8 @@ class Product(
     val id: Long? = null,
     @Column(nullable = false)
     val name: String,
+    @Column(nullable = false)
+    val price: Long
 ) {
 
 }

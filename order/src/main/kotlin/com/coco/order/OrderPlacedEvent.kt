@@ -1,4 +1,4 @@
-package com.coco.orderplacement
+package com.coco.order
 
 data class OrderPlacedEvent(
     val orderKey: String,
@@ -9,3 +9,4 @@ data class OrderPlacedEvent(
     // val productSku: String? = null, // SKU 등 추가 정보가 필요하다면 여기에 포함
     // val productImageUrl: String? = null
 )
+
