@@ -1,4 +1,4 @@
-package com.coco.order
+package com.coco.orderplacement
 
 import org.springframework.stereotype.Component
 import org.springframework.data.redis.core.StringRedisTemplate
@@ -24,14 +24,15 @@ class SellingStockProvider(
         return selling
     }
 
-    fun decrease(productId: Long, quantity: Int): Boolean {
+    fun decrease(productId: Long, quantity: Int, orderId: String): Boolean {
         val key = getKey(productId)
-        get(productId) // 캐시 미존재 시 초기화
 
         val result = redisTemplate.execute(
             DefaultRedisScript(DECR_LUA, Long::class.java),
             listOf(key),
-            quantity.toString()
+            quantity.toString(),
+            orderId,
+            configProperties.redisProperties().ordersKey
         )
 
         return when (result) {
@@ -48,11 +49,14 @@ class SellingStockProvider(
 
     companion object {
         //todo 센티넬 방식 시 lua는 마스터에서만 실행됨. 다른 읽기는 슬레이브로 가도록 커스텀 필요.
+        // 하나의 주문에 여러 상품이 포함되는 경우 대응 필요
         private val DECR_LUA = """
             local current = redis.call("GET", KEYS[1])
             if not current then return -2 end
             if tonumber(current) < tonumber(ARGV[1]) then return -1 end
-            return redis.call("DECRBY", KEYS[1], ARGV[1])
+            local result = redis.call("DECRBY", KEYS[1], ARGV[1])
+            redis.call("SADD", ARGV[3], ARGV[2])
+            return result
         """.trimIndent()
     }
 }

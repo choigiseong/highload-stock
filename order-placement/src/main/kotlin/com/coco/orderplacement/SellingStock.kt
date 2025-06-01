@@ -1,4 +1,4 @@
-package com.coco.order
+package com.coco.orderplacement
 
 import jakarta.persistence.*
 import java.time.LocalDateTime
@@ -10,9 +10,10 @@ class SellingStock(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false)
-    var product: Product,
+    // 여기서는 부가 정보가 필요하지 않다.
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "product_id", nullable = false)
+//    var product: Product,
 
     @Column(nullable = false)
     val stock: Int,

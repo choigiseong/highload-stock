@@ -1,4 +1,4 @@
-package com.coco.order
+package com.coco.orderplacement
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean
@@ -11,10 +11,18 @@ class ConfigProperties {
     @ConfigurationProperties(prefix = "redis")
     fun redisProperties() = RedisProperties()
 
+    @Bean
+    @ConfigurationProperties(prefix = "kafka")
+    fun kafkaProperties() = KafkaProperties()
 
     class RedisProperties {
         lateinit var host: String
         lateinit var port: String
         lateinit var sellingStockKey: String
+        lateinit var ordersKey: String
+    }
+
+    class KafkaProperties {
+        lateinit var orderTopic: String
     }
 }

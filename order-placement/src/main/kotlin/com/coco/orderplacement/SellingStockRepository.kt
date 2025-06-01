@@ -1,4 +1,4 @@
-package com.coco.order
+package com.coco.orderplacement
 
 import org.springframework.data.jpa.repository.JpaRepository
 
