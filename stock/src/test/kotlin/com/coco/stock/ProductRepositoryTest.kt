@@ -1,4 +1,8 @@
 package com.coco.stock
+import com.coco.stock.model.Product
+import com.coco.stock.model.Stock
+import com.coco.stock.repository.ProductRepository
+import com.coco.stock.repository.StockRepository
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
@@ -13,8 +17,8 @@ import kotlin.test.assertEquals
 @DataJpaTest
 @Testcontainers
 class ProductRepositoryTest @Autowired constructor(
-    val productRepository: ProductRepository,
-    val stockRepository: StockRepository
+	val productRepository: ProductRepository,
+	val stockRepository: StockRepository
 ) {
 
 	companion object {

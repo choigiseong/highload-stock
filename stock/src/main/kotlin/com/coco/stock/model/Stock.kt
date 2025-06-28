@@ -1,17 +1,18 @@
-package com.coco.stock
+package com.coco.stock.model
 
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "selling_stock")
-class SellingStock(
+@Table(name = "stock")
+class Stock(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 
-    @Column(nullable = false)
-    val productId: Long,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = false)
+    var product: Product,
 
     @Column(nullable = false)
     val stock: Int,

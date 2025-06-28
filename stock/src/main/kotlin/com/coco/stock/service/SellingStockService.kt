@@ -1,5 +1,9 @@
-package com.coco.stock
+package com.coco.stock.service
 
+import com.coco.stock.kafka.OrderPlacedEvent
+import com.coco.stock.repository.SellingStockRepository
+import com.coco.stock.repository.StockProcessedEventRepository
+import com.coco.stock.model.StockProcessedEvent
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional

@@ -1,5 +1,7 @@
-package com.coco.stock
+package com.coco.stock.kafka
 
+import com.coco.stock.kafka.OrderPlacedEvent
+import com.coco.stock.service.SellingStockService
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.stereotype.Component
 

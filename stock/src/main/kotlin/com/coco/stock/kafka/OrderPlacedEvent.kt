@@ -1,4 +1,4 @@
-package com.coco.stock
+package com.coco.stock.kafka
 
 import java.time.Instant
 
