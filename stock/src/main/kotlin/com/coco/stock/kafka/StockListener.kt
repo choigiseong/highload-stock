@@ -1,6 +1,6 @@
 package com.coco.stock.kafka
 
-import com.coco.stock.kafka.OrderPlacedEvent
+import com.coco.stock.service.ProcessedEventService
 import com.coco.stock.service.SellingStockService
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.stereotype.Component
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component
 @Component
 class StockListener(
     private val sellingStockService: SellingStockService,
+    private val processedEventService: ProcessedEventService
 ) {
 
     @KafkaListener(
@@ -15,9 +16,11 @@ class StockListener(
         groupId = "\${kafka.order-topic}-stockservice",
     )
     fun handleOrderPlacedEvent(event: OrderPlacedEvent) {
-        if (sellingStockService.existsByOrderKey(event.orderKey)) {
+        if (processedEventService.existsByProcessedKey(event.orderKey)) {
             return
         }
-        sellingStockService.decreaseSellingStockForOrder(event)
+        processedEventService.execute(event.orderKey) {
+            sellingStockService.decreaseSellingStockForOrder(event)
+        }
     }
 }
