@@ -1,7 +1,7 @@
 package com.coco.stock.service
 
-import com.coco.stock.model.ProcessedEvent
-import com.coco.stock.repository.ProcessedEventRepository
+import com.coco.stock.persistence.model.ProcessedEvent
+import com.coco.stock.persistence.repository.ProcessedEventRepository
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 

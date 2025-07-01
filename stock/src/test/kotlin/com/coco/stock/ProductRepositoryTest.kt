@@ -1,8 +1,8 @@
 package com.coco.stock
-import com.coco.stock.model.Product
-import com.coco.stock.model.Stock
-import com.coco.stock.repository.ProductRepository
-import com.coco.stock.repository.StockRepository
+import com.coco.stock.persistence.model.Product
+import com.coco.stock.persistence.model.Stock
+import com.coco.stock.persistence.repository.ProductRepository
+import com.coco.stock.persistence.repository.StockRepository
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest

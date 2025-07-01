@@ -1,6 +1,6 @@
-package com.coco.stock.repository
+package com.coco.stock.persistence.repository
 
-import com.coco.stock.model.Stock
+import com.coco.stock.persistence.model.Stock
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface StockRepository : JpaRepository<Stock, Long> {

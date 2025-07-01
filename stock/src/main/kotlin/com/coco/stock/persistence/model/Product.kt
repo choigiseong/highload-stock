@@ -1,6 +1,6 @@
-package com.coco.stock.model
+package com.coco.stock.persistence.model
 
-import com.coco.stock.model.Stock
+import com.coco.stock.persistence.model.Stock
 import jakarta.persistence.*
 
 @Entity

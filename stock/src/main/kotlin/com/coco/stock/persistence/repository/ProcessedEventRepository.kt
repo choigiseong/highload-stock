@@ -1,6 +1,6 @@
-package com.coco.stock.repository
+package com.coco.stock.persistence.repository
 
-import com.coco.stock.model.ProcessedEvent
+import com.coco.stock.persistence.model.ProcessedEvent
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

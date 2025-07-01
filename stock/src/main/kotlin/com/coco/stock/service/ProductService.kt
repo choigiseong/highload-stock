@@ -1,9 +1,9 @@
 package com.coco.stock.service
 
-import com.coco.stock.repository.ProductRepository
-import com.coco.stock.repository.StockRepository
-import com.coco.stock.model.Product
-import com.coco.stock.model.Stock
+import com.coco.stock.persistence.repository.ProductRepository
+import com.coco.stock.persistence.repository.StockRepository
+import com.coco.stock.persistence.model.Product
+import com.coco.stock.persistence.model.Stock
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime

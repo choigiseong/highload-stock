@@ -1,4 +1,4 @@
-package com.coco.stock.model
+package com.coco.stock.persistence.model
 
 
 import jakarta.persistence.*

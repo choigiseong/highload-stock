@@ -1,6 +1,6 @@
-package com.coco.stock.repository
+package com.coco.stock.persistence.repository
 
-import com.coco.stock.model.SellingStock
+import com.coco.stock.persistence.model.SellingStock
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
