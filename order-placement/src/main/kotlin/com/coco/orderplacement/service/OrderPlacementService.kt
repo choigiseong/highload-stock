@@ -13,6 +13,7 @@ class OrderPlacementService(
     private val productRepository: ProductRepository
 ) {
     fun placeOrder(productId: Long, quantity: Int, orderKey: String, orderPlacedAt: Instant) {
+        // db 조회를 해야할까? 다른 방법은?
         val product = productRepository.findById(productId)
             .orElseThrow {
                 IllegalArgumentException("존재하지 않는 상품: $productId")
