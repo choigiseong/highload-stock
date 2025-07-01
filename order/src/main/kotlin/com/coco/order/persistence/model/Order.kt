@@ -1,4 +1,4 @@
-package com.coco.order
+package com.coco.order.persistence.model
 
 import jakarta.persistence.*
 

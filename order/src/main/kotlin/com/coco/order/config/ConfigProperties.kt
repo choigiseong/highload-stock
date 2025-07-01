@@ -1,4 +1,4 @@
-package com.coco.order
+package com.coco.order.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean

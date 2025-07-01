@@ -1,4 +1,4 @@
-package com.coco.order
+package com.coco.order.kafka
 
 data class OrderPlacedEvent(
     val orderKey: String,

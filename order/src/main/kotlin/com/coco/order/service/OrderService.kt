@@ -1,5 +1,9 @@
-package com.coco.order
+package com.coco.order.service
 
+import com.coco.order.kafka.OrderPlacedEvent
+import com.coco.order.persistence.model.Order
+import com.coco.order.persistence.model.OrderItem
+import com.coco.order.persistence.repository.OrderRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

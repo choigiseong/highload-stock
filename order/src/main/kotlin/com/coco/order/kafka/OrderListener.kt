@@ -1,5 +1,6 @@
-package com.coco.order
+package com.coco.order.kafka
 
+import com.coco.order.service.OrderService
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.stereotype.Component
 

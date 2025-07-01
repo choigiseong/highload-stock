@@ -1,5 +1,6 @@
-package com.coco.order
+package com.coco.order.persistence.model
 
+import com.coco.order.persistence.model.Order
 import jakarta.persistence.*
 
 
