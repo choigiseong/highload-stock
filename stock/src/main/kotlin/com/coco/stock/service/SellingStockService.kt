@@ -14,7 +14,6 @@ class SellingStockService(
 
 
     // todo update가 아닌 delta로 하고, 스케줄링으로 재고를 맞출 수 있다. (성능개선)
-    @Transactional
     fun decreaseSellingStockForOrder(event: OrderPlacedEvent) {
         val affectedRows = sellingStockRepository.decreaseStockByProductIdAndQuantity(event.productId, event.quantity)
 
