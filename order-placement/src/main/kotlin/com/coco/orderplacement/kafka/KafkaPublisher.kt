@@ -1,5 +1,6 @@
-package com.coco.orderplacement
+package com.coco.orderplacement.kafka
 
+import com.coco.orderplacement.config.ConfigProperties
 import org.springframework.context.event.EventListener
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Component

@@ -1,4 +1,4 @@
-package com.coco.orderplacement
+package com.coco.orderplacement.kafka
 
 import java.time.Instant
 

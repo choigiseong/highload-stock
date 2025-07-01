@@ -1,5 +1,7 @@
-package com.coco.orderplacement
+package com.coco.orderplacement.service
 
+import com.coco.orderplacement.kafka.OrderPlacedEvent
+import com.coco.orderplacement.persistence.repository.ProductRepository
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
 import java.time.Instant

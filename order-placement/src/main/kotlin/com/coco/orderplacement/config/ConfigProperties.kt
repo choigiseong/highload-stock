@@ -1,4 +1,4 @@
-package com.coco.orderplacement
+package com.coco.orderplacement.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean

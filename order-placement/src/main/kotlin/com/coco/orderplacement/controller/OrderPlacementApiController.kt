@@ -1,5 +1,6 @@
-package com.coco.orderplacement
+package com.coco.orderplacement.controller
 
+import com.coco.orderplacement.service.OrderPlacementService
 import java.time.Instant
 
 import org.springframework.http.HttpStatus
