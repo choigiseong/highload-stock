@@ -51,8 +51,6 @@ class SellingStockProvider(
     }
 
     companion object {
-        //todo 센티넬 방식 시 lua는 마스터에서만 실행됨. 다른 읽기는 슬레이브로 가도록 커스텀 필요.
-        // 하나의 주문에 여러 상품이 포함되는 경우 대응 필요
         private val DECR_LUA = """
             local current = redis.call("GET", KEYS[1])
             if not current then return -2 end
