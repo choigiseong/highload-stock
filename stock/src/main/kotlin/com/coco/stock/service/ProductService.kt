@@ -6,30 +6,12 @@ import com.coco.stock.persistence.model.Product
 import com.coco.stock.persistence.model.Stock
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import java.time.LocalDateTime
 
 @Service
 class ProductService(
     private val productRepository: ProductRepository,
     private val stockRepository: StockRepository
 ) {
-
-    // 상품 등록
-    @Transactional
-    fun registerProduct(name: String): Product {
-        val product = Product(name = name)
-        return productRepository.save(product)
-    }
-
-    // 상품별 재고 등록
-    @Transactional
-    fun addStock(productId: Long, quantity: Int, expiredAt: LocalDateTime?): Stock {
-        val product = productRepository.findById(productId)
-            .orElseThrow { IllegalArgumentException("상품을 찾을 수 없습니다: $productId") }
-
-        val stock = Stock(product = product, stock = quantity, expiredAt = expiredAt)
-        return stockRepository.save(stock)
-    }
 
     // 상품과 그 재고 조회
     @Transactional(readOnly = true)
