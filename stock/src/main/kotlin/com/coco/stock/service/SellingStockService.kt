@@ -4,11 +4,9 @@ import com.coco.stock.kafka.OrderPlacedEvent
 import com.coco.stock.persistence.repository.SellingStockRepository
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
 
 @Service
 class SellingStockService(
-    private val objectMapper: ObjectMapper,
     private val sellingStockRepository: SellingStockRepository,
 ) {
 

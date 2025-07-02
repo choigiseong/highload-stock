@@ -37,8 +37,8 @@ allprojects {
 
 		dependencies {
 			implementation("org.springframework.boot:spring-boot-starter-web")
-			implementation("org.springframework.boot:spring-boot-starter")
 			implementation("org.springframework.kafka:spring-kafka")
+			implementation("org.springframework.boot:spring-boot-starter")
 			implementation("org.jetbrains.kotlin:kotlin-reflect")
 			implementation("mysql:mysql-connector-java:8.0.33")
 			testRuntimeOnly("org.junit.platform:junit-platform-launcher")
